@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:hyrule/main.dart';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class Entry {
   int id;
@@ -34,13 +36,16 @@ class Entry {
       name: map['name'] as String,
       image: map['image'] as String,
       description: map['description'] as String,
-      commonLocations: map['commonLocations'] as String,
+      commonLocations:
+          jsonEncode(map["common_locations"] ?? ["Sem localização"]),
       category: map['category'] as String,
     );
   }
 
   List<String> commonLocationsConverter() {
-    return (jsonDecode(commonLocations));
+    return (jsonDecode(commonLocations) as List<dynamic>)
+        .map((e) => e as String)
+        .toList();
   }
 
   String toJson() => json.encode(toMap());
