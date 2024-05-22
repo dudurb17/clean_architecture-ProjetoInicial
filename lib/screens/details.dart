@@ -23,7 +23,10 @@ class Details extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(entry.name),
+            Text(
+              entry.name,
+              style: const TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
+            ),
             Wrap(
               children: entry
                   .commonLocationsConverter()
@@ -32,7 +35,21 @@ class Details extends StatelessWidget {
                       ))
                   .toList(),
             ),
-            Image.network(entry.image),
+            Container(
+              width: 400,
+              height: 300,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: SizedBox.fromSize(
+                  size: Size.fromRadius(48),
+                  child: Image.network(entry.image, fit: BoxFit.fill),
+                ),
+              ),
+            ),
             Text(entry.description)
           ],
         ),

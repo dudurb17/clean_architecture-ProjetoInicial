@@ -21,12 +21,38 @@ class Category extends StatelessWidget {
             );
           },
           child: Ink(
-            child: Center(
-              child: Image.asset("$imagePath$category.png"),
+            child: Container(
+              width: 200,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(
+                  color: Colors.blue, // Cor da borda
+                  width: 2.0,
+
+                  // Largura da borda
+                ),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5), // Cor da sombra
+                    spreadRadius: 5, // Raio de propagação da sombra
+                    blurRadius: 7, // Raio de desfoque da sombra
+                    offset: const Offset(
+                        0, 2), // Posição da sombra (horizontal, vertical)
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Image.asset("$imagePath$category.png"),
+              ),
             ),
           ),
         ),
-        Text(categories[category]!)
+        Text(
+          categories[category]!,
+          style: const TextStyle(color: Colors.blue, fontSize: 20),
+        )
       ],
     );
   }
