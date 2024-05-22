@@ -11,12 +11,13 @@ class EntryCard extends StatelessWidget {
       child: Column(
         children: [
           InkWell(
-            onTap: (){},
+            onTap: () {},
             child: Ink(
               child: Row(
                 children: [
                   Image.network(entry.image),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(entry.name),
                       Text(entry.description),
