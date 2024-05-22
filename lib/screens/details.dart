@@ -19,6 +19,7 @@ class Details extends StatelessWidget {
           onPressed: () {
             daoController.saveEntry(entry: entry);
           },
+          child: Icon(Icons.bookmark),
         ),
         body: Column(
           children: [

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hyrule/controllers/dao_controller.dart';
 import 'package:hyrule/domain/models/entry.dart';
 import 'package:hyrule/screens/details.dart';
@@ -33,14 +36,38 @@ class EntryCard extends StatelessWidget {
               child: Ink(
                 child: Row(
                   children: [
-                    Image.network(entry.image),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(entry.name),
-                        Text(entry.description),
-                      ],
-                    )
+                    Container(
+                      width: 100,
+                      height: 150,
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: SizedBox.fromSize(
+                          size: Size.fromRadius(48),
+                          child: Image.network(entry.image, fit: BoxFit.fill),
+                        ),
+                      ),
+                    ),
+                    Container(
+                        width: 300,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              overflow: TextOverflow.clip,
+                              entry.name,
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                            Text(
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.clip,
+                              entry.description,
+                            ),
+                          ],
+                        ))
                   ],
                 ),
               ),
@@ -54,7 +81,7 @@ class EntryCard extends StatelessWidget {
                     ),
                   )
                   .toList(),
-            )
+            ),
           ],
         ),
       ),
