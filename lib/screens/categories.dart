@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hyrule/screens/favorites.dart';
 import 'package:hyrule/utils/consts/categories.dart';
 import 'package:hyrule/screens/components/category.dart';
 
@@ -12,9 +13,22 @@ class Categories extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Escolha uma categoria"),
           centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Favorites(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.bookmark),
+            ),
+          ],
         ),
         body: GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
