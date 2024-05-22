@@ -46,12 +46,12 @@ class EntryCard extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: SizedBox.fromSize(
-                          size: Size.fromRadius(48),
+                          size: const Size.fromRadius(48),
                           child: Image.network(entry.image, fit: BoxFit.fill),
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                         width: 300,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
