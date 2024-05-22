@@ -25,8 +25,10 @@ class Favorites extends StatelessWidget {
               case ConnectionState.done:
                 if (snapshot.hasData) {
                   return ListView.builder(
-                    itemBuilder: (context, index) =>
-                        EntryCard(entry: snapshot.data![index]),
+                    itemBuilder: (context, index) => EntryCard(
+                      entry: snapshot.data![index],
+                      isSaved: true,
+                    ),
                     itemCount: snapshot.data!.length,
                   );
                 }
