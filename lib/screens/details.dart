@@ -38,14 +38,14 @@ class Details extends StatelessWidget {
             Container(
               width: 400,
               height: 300,
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: SizedBox.fromSize(
-                  size: Size.fromRadius(48),
+                  size: const Size.fromRadius(48),
                   child: Image.network(entry.image, fit: BoxFit.fill),
                 ),
               ),

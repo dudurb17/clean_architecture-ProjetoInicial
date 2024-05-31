@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hyrule/screens/favorites.dart';
 import 'package:hyrule/utils/consts/categories.dart';
 import 'package:hyrule/screens/components/category.dart';
@@ -27,15 +28,17 @@ class Categories extends StatelessWidget {
             ),
           ],
         ),
-        body: GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-            ),
-            
-            children:
-                categories.keys.map((e) => Category(category: e)).toList()),
+        body: Padding(
+          padding: const EdgeInsets.all(15),
+          child: GridView(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+              ),
+              children:
+                  categories.keys.map((e) => Category(category: e)).toList()),
+        ),
       ),
     );
   }

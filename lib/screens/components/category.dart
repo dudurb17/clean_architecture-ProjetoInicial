@@ -25,7 +25,7 @@ class Category extends StatelessWidget {
               width: 200,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: const Color.fromARGB(255, 36, 36, 36),
                 border: Border.all(
                   color: Colors.blue, // Cor da borda
                   width: 2.0,

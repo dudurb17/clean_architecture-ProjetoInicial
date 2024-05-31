@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hyrule/controllers/dao_controller.dart';
 import 'package:hyrule/domain/models/entry.dart';
@@ -28,18 +26,19 @@ class EntryCard extends StatelessWidget {
             InkWell(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Details(entry: entry),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Details(entry: entry),
+                  ),
+                );
               },
               child: Ink(
                 child: Row(
                   children: [
                     Container(
-                      width: 100,
-                      height: 150,
-                      padding: EdgeInsets.all(8),
+                      width: 150,
+                      height: 310,
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -52,35 +51,51 @@ class EntryCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                        width: 300,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              overflow: TextOverflow.clip,
-                              entry.name,
-                              style: const TextStyle(fontSize: 20),
+                      width: 250,
+                      height: 200,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          
+                          Text(
+                            overflow: TextOverflow.clip,
+                            entry.name,
+                            style: const TextStyle(
+                              fontSize: 25,
                             ),
-                            Text(
-                              textAlign: TextAlign.justify,
-                              overflow: TextOverflow.clip,
-                              entry.description,
-                            ),
-                          ],
-                        ))
+                          ),
+                          Text(
+                            overflow: TextOverflow.clip,
+                            textAlign: TextAlign.justify,
+                            entry.description,
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
-            Wrap(
-              children: entry
-                  .commonLocationsConverter()
-                  .map(
-                    (e) => Chip(
-                      label: Text(e),
-                    ),
-                  )
-                  .toList(),
+            Container(
+              width: 400,
+              height: 50,
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(8.0),
+                    bottomRight: Radius.circular(8.0),
+                  ),
+                  color: Color(0xFF3B4858)),
+              child: Wrap(
+                children: entry
+                    .commonLocationsConverter()
+                    .map(
+                      (e) => Chip(
+                        label: Text(e),
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
           ],
         ),
